@@ -42,11 +42,11 @@ def dctransformer(channel):
         tempJ = i
 
     # konieczna jest zmiana typu na float, aby DCT mogło zadziałać
-    imf = [np.float32(n) for n in divider]
+    float_img = [np.float32(n) for n in divider]
     dct_result = []
-    for part in imf:
-        currDCT = cv2.dct(part)
-        dct_result.append(currDCT)
+    for block_dv in float_img:
+        current = cv2.dct(block_dv)
+        dct_result.append(current)
 
     # podzielenie wyniku DCT przez odpowiednie współczynniki macierzy kwantyzacji - stratny etap kompresji
     for block in dct_result:
